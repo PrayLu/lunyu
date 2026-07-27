@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>论语 · 选择你的课程风格</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1c2421;
+      --ink-soft: #3d4a44;
+      --paper: #eef2ef;
+      --jade: #2f6b57;
+      --jade-deep: #1f4a3c;
+      --cinnabar: #b63a2e;
+      --gold: #b08a3c;
+      --line: rgba(28, 36, 33, 0.12);
+      --shadow: 0 18px 50px rgba(28, 36, 33, 0.12);
+      --radius: 18px;
+      --font-display: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+      --font-body: "Noto Serif SC", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(47, 107, 87, 0.14), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(182, 58, 46, 0.08), transparent 50%),
+        linear-gradient(180deg, #f5f7f5 0%, var(--paper) 40%, #e8eee9 100%);
+      min-height: 100vh;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      align-content: end;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      color: #f4f7f5;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 42%;
+      transform: scale(1.06);
+      animation: ken 22s ease-in-out infinite alternate;
+      filter: saturate(1.05) contrast(1.04);
+    }
+
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(12, 20, 18, 0.18) 0%, rgba(12, 20, 18, 0.28) 35%, rgba(10, 16, 14, 0.78) 72%, rgba(8, 12, 11, 0.92) 100%),
+        radial-gradient(ellipse 70% 55% at 70% 30%, rgba(176, 138, 60, 0.16), transparent 60%);
+      pointer-events: none;
+    }
+
+    @keyframes ken {
+      from { transform: scale(1.06) translate3d(0, 0, 0); }
+      to { transform: scale(1.14) translate3d(-1.5%, 1%, 0); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 5.5rem 0 3.25rem;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: clamp(3.8rem, 12vw, 7.5rem);
+      letter-spacing: 0.18em;
+      line-height: 1;
+      color: #f7faf8;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: rise 1s ease forwards 0.1s;
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .brand span {
+      display: inline-block;
+      position: relative;
+    }
+
+    .brand span::after {
+      content: "";
+      position: absolute;
+      left: 0.1em;
+      right: 0.1em;
+      bottom: 0.08em;
+      height: 0.12em;
+      background: linear-gradient(90deg, transparent, #d4a24a, transparent);
+      opacity: 0.75;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4.2vw, 2.4rem);
+      font-weight: 400;
+      max-width: 16em;
+      margin-bottom: 0.85rem;
+      opacity: 0;
+      animation: rise 1s ease forwards 0.28s;
+      color: #f4f7f5;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      color: rgba(236, 242, 238, 0.82);
+      max-width: 30em;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: rise 1s ease forwards 0.45s;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      opacity: 0;
+      animation: rise 1s ease forwards 0.6s;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 0.95rem 1.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: #f4f8f5;
+      color: var(--jade-deep);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .btn-primary:hover { background: #fff; }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(244, 247, 245, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.55);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .scroll-hint {
+      margin-top: 3.5rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: rgba(236, 242, 238, 0.65);
+      opacity: 0;
+      animation: rise 1s ease forwards 0.85s, pulse 2.4s ease-in-out 1.8s infinite;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.9; }
+    }
+
+    .section { padding: 4.5rem 0 1rem; }
+
+    .section-head {
+      margin-bottom: 2.25rem;
+      max-width: 36em;
+    }
+
+    .section-head .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.28em;
+      color: var(--jade);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-head p { color: var(--ink-soft); }
+
+    .styles {
+      display: grid;
+      gap: 1.25rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .vote {
+      padding: 2.5rem 0 8.5rem;
+    }
+
+    .vote-panel {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      gap: 1.1rem;
+      padding: 2.4rem 1.5rem 2.2rem;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(47, 107, 87, 0.1), transparent 55%),
+        rgba(255, 255, 255, 0.72);
+      box-shadow: 0 18px 50px rgba(28, 36, 33, 0.08);
+    }
+
+    .vote-panel .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      color: var(--jade);
+    }
+
+    .vote-panel h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.55rem, 3.2vw, 2.05rem);
+      font-weight: 400;
+      max-width: 14em;
+    }
+
+    .vote-panel p {
+      color: var(--ink-soft);
+      max-width: 28em;
+      font-size: 0.98rem;
+    }
+
+    .qr-frame {
+      margin-top: 0.35rem;
+      padding: 0.9rem;
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid rgba(28, 36, 33, 0.08);
+      box-shadow: 0 10px 30px rgba(28, 36, 33, 0.08);
+    }
+
+    .qr-frame img {
+      display: block;
+      width: min(220px, 58vw);
+      height: auto;
+      image-rendering: pixelated;
+    }
+
+    .vote-hint {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+
+    .vote-hint strong {
+      color: var(--jade-deep);
+      font-weight: 600;
+    }
+
+    @media (min-width: 860px) {
+      .styles {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem;
+      }
+    }
+
+    .style-card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.62);
+      backdrop-filter: blur(10px);
+      padding: 0 0 1.35rem;
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+      outline: none;
+      text-align: left;
+      width: 100%;
+      font: inherit;
+      color: inherit;
+      overflow: hidden;
+    }
+
+    .card-media {
+      position: relative;
+      height: clamp(168px, 28vw, 220px);
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+      filter: saturate(1.05) contrast(1.03);
+    }
+
+    .card-media::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 45%;
+      background: linear-gradient(180deg, transparent, rgba(238, 242, 239, 0.95));
+      pointer-events: none;
+    }
+
+    .card-body {
+      padding: 0 1.4rem;
+    }
+
+    .style-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--accent, var(--jade));
+      opacity: 0.7;
+      transition: width 0.3s ease, opacity 0.3s ease;
+      z-index: 2;
+    }
+
+    .style-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 60px rgba(28, 36, 33, 0.16);
+      border-color: rgba(47, 107, 87, 0.28);
+      background: rgba(255, 255, 255, 0.86);
+    }
+
+    .style-card:hover .card-media img {
+      transform: scale(1.12);
+      filter: saturate(1.12) contrast(1.06);
+    }
+
+    .style-card:focus-visible {
+      box-shadow: 0 0 0 3px rgba(47, 107, 87, 0.35);
+    }
+
+    .style-card.is-selected {
+      border-color: var(--accent, var(--jade));
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .style-card.is-selected::before {
+      width: 6px;
+      opacity: 1;
+    }
+
+    .style-card[data-id="1"] { --accent: #2f6b57; }
+    .style-card[data-id="2"] { --accent: #8a5a2b; }
+    .style-card[data-id="3"] { --accent: #b63a2e; }
+    .style-card[data-id="4"] { --accent: #3a5f8a; }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .version-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      color: var(--accent, var(--jade));
+      font-weight: 600;
+    }
+
+    .select-mark {
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+      z-index: 3;
+      width: 1.55rem;
+      height: 1.55rem;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.65);
+      background: rgba(12, 18, 16, 0.35);
+      backdrop-filter: blur(6px);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    .select-mark svg {
+      width: 0.75rem;
+      height: 0.75rem;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: all 0.25s ease;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2.5;
+    }
+
+    .style-card.is-selected .select-mark {
+      background: var(--accent, var(--jade));
+      border-color: var(--accent, var(--jade));
+    }
+
+    .style-card.is-selected .select-mark svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .style-card h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.6vw, 1.65rem);
+      font-weight: 400;
+      line-height: 1.35;
+      margin-bottom: 0.55rem;
+    }
+
+    .style-card .pitch {
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      padding: 0.28rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(28, 36, 33, 0.05);
+      color: var(--ink-soft);
+    }
+
+    .path {
+      display: grid;
+      gap: 0.45rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .path-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.65rem;
+      align-items: start;
+      font-size: 0.9rem;
+    }
+
+    .path-num {
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--accent, var(--jade)) 14%, transparent);
+      color: var(--accent, var(--jade));
+      display: grid;
+      place-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-top: 0.1rem;
+    }
+
+    .path-item strong {
+      display: block;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .path-item span {
+      color: var(--ink-soft);
+      font-size: 0.84rem;
+    }
+
+    .preview {
+      border-top: 1px dashed var(--line);
+      padding-top: 1rem;
+    }
+
+    .preview-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      margin-bottom: 0.55rem;
+    }
+
+    .quote {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .quote em {
+      display: block;
+      margin-top: 0.35rem;
+      font-style: normal;
+      color: var(--ink-soft);
+      font-size: 0.86rem;
+    }
+
+    .detail-btn {
+      margin-top: 1.1rem;
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      font-size: 0.9rem;
+      color: var(--accent, var(--jade));
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .detail-btn:hover { text-decoration: underline; }
+
+    .choice-bar {
+      position: fixed;
+      left: 50%;
+      bottom: 1.25rem;
+      transform: translateX(-50%) translateY(120%);
+      width: min(740px, calc(100% - 1.5rem));
+      background: rgba(28, 36, 33, 0.92);
+      color: #f3f6f4;
+      border-radius: 999px;
+      padding: 0.7rem 0.75rem 0.7rem 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 16px 40px rgba(28, 36, 33, 0.28);
+      z-index: 40;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      backdrop-filter: blur(12px);
+    }
+
+    .choice-bar.is-visible {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .choice-bar .label { font-size: 0.92rem; min-width: 0; }
+
+    .choice-bar .label strong {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.05rem;
+    }
+
+    .choice-bar .label span {
+      display: block;
+      font-size: 0.78rem;
+      opacity: 0.65;
+      margin-top: 0.1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .choice-bar .confirm {
+      flex-shrink: 0;
+      background: #f4f8f5;
+      color: var(--jade-deep);
+      border: none;
+      border-radius: 999px;
+      padding: 0.75rem 1.25rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .choice-bar .confirm:hover {
+      background: #fff;
+      transform: scale(1.02);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 28, 25, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 50;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -46%) scale(0.96);
+      width: min(720px, calc(100% - 1.5rem));
+      max-height: min(84vh, 780px);
+      overflow: auto;
+      background: #f7faf8;
+      border-radius: 22px;
+      padding: 0 0 1.5rem;
+      z-index: 60;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 30px 80px rgba(20, 28, 25, 0.3);
+    }
+
+    .modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .modal-cover {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .modal-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+    }
+
+    .modal-cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 16, 14, 0.08), rgba(247, 250, 248, 0.96) 88%);
+    }
+
+    .modal-inner {
+      padding: 0 1.5rem;
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(12, 18, 16, 0.4);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      color: #f4f7f5;
+      z-index: 3;
+    }
+
+    .modal .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--jade);
+      margin-bottom: 0.4rem;
+    }
+
+    .modal h3 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      padding-right: 2rem;
+    }
+
+    .modal .lead {
+      color: var(--ink-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .modal .blocks {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .block {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.95rem 1rem;
+    }
+
+    .block h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.45rem;
+      color: var(--jade-deep);
+    }
+
+    .block p, .block li {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .block ul {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .block li {
+      padding-left: 0.85rem;
+      position: relative;
+    }
+
+    .block li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--cinnabar);
+    }
+
+    .lesson {
+      padding: 0.65rem 0;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .lesson:last-child { border-bottom: none; padding-bottom: 0; }
+    .lesson:first-child { padding-top: 0; }
+
+    .lesson .n {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 0.15rem;
+    }
+
+    .lesson .t {
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .lesson .s {
+      font-size: 0.84rem;
+      color: var(--ink-soft);
+    }
+
+    .modal .pick {
+      margin-top: 1.25rem;
+      width: 100%;
+      background: var(--jade-deep);
+      color: #f4f8f5;
+      border: none;
+      border-radius: 999px;
+      padding: 0.95rem 1.25rem;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .modal .pick:hover { background: var(--jade); }
+
+    .success {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      background: #0c1210;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      overflow: hidden;
+    }
+
+    .success-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .success-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05) brightness(0.55);
+      transform: scale(1.08);
+      animation: ken 18s ease-in-out infinite alternate;
+    }
+
+    .success-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 12, 11, 0.35), rgba(8, 12, 11, 0.82)),
+        radial-gradient(ellipse at 50% 30%, rgba(176, 138, 60, 0.18), transparent 55%);
+    }
+
+    .success.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .success-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 30em;
+      color: #f4f7f5;
+      transform: translateY(16px);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .success.is-open .success-inner { transform: translateY(0); }
+
+    .success .seal {
+      width: 4.5rem;
+      height: 4.5rem;
+      margin: 0 auto 1.25rem;
+      border: 3px solid #d4a24a;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #d4a24a;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      transform: rotate(-8deg);
+      animation: stamp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+      background: rgba(8, 12, 11, 0.35);
+      backdrop-filter: blur(6px);
+    }
+
+    @keyframes stamp {
+      0% { transform: rotate(-8deg) scale(1.4); opacity: 0; }
+      100% { transform: rotate(-8deg) scale(1); opacity: 1; }
+    }
+
+    .success h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+      color: #f7faf8;
+    }
+
+    .success p {
+      color: rgba(236, 242, 238, 0.78);
+      margin-bottom: 1.25rem;
+    }
+
+    .success .chosen-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: #e6c27a;
+      margin-bottom: 1.25rem;
+    }
+
+    .success-qr {
+      margin: 0 auto 1.5rem;
+      padding: 0.65rem;
+      width: fit-content;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .success-qr img {
+      display: block;
+      width: 148px;
+      height: auto;
+      image-rendering: pixelated;
+    }
+
+    .success .btn-primary {
+      background: #f4f8f5;
+      color: var(--jade-deep);
+    }
+
+    .success .btn-primary:hover { background: #fff; }
+
+    @media (max-width: 560px) {
+      .choice-bar {
+        border-radius: 18px;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .choice-bar .label span { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" aria-label="课程风格选择首页">
+    <div class="hero-media" aria-hidden="true">
+      <img src="assets/hero-journey.jpg" alt="" />
+      <div class="hero-veil"></div>
+    </div>
+    <div class="hero-content wrap">
+      <div class="brand"><span>论语</span></div>
+      <h1>四种学法，选你最有感觉的一种</h1>
+      <p>同一部《论语》，四种走进孔子的方式。先比较风格与内容形式，再点选你最想上的那一门。</p>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="#styles">浏览四种风格</a>
+        <button class="btn btn-ghost" type="button" id="randomPick">帮我随机挑一个</button>
+      </div>
+      <div class="scroll-hint">向下滑动 · 开始比较</div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="styles" aria-labelledby="styles-title">
+    <div class="section-head">
+      <div class="eyebrow">COURSE STYLES</div>
+      <h2 id="styles-title">点一张，就是你的选择</h2>
+      <p>每一种节奏不同：有人喜欢跟着孔子走路，有人喜欢对着人生难题找答案。点选最对味的那一种；想看细纲，再点「查看完整介绍」。</p>
+    </div>
+
+    <div class="styles" role="radiogroup" aria-label="课程风格选择">
+      <button type="button" class="style-card" data-id="1" role="radio" aria-checked="false"
+        data-title="与孔子游" data-full="与孔子游——三十天和孔子一起周游列国" data-img="assets/style-01-travel.jpg">
+        <div class="card-media"><img src="assets/style-01-travel.jpg" alt="" loading="lazy" /></div>
+        <div class="select-mark" aria-hidden="true">
+          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" /></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="version-tag">版本 01</div>
+          </div>
+          <h3>与孔子游</h3>
+          <p class="pitch">三十天，和孔子一起周游列国。每天一个场景：被当背景板、绝粮、遇隐士……原文从故事里长出来，旁边还有刺人的互动问题。</p>
+          <div class="meta-row">
+            <span class="chip">场景叙事</span>
+            <span class="chip">20 课 / 4 单元</span>
+            <span class="chip">互动提问</span>
+          </div>
+          <div class="path">
+            <div class="path-item"><div class="path-num">1</div><div><strong>如何看待「自我」</strong><span>第 1–5 课</span></div></div>
+            <div class="path-item"><div class="path-num">2</div><div><strong>如何应对「逆境」</strong><span>第 6–10 课</span></div></div>
+            <div class="path-item"><div class="path-num">3</div><div><strong>如何处理「关系」</strong><span>第 11–15 课</span></div></div>
+            <div class="path-item"><div class="path-num">4</div><div><strong>如何面对「终点」</strong><span>第 16–20 课</span></div></div>
+          </div>
+          <div class="preview">
+            <div class="preview-label">单课长这样</div>
+            <div class="quote">
+              「吾未见好德如好色者也。」
+              <em>卫灵公与南子同车招摇过市，孔子的车跟在后面当背景板……</em>
+            </div>
+          </div>
+          <span class="detail-btn" data-detail="1">查看完整介绍 →</span>
+        </div>
+      </button>
+
+      <button type="button" class="style-card" data-id="2" role="radio" aria-checked="false"
+        data-title="孔子的人生" data-full="孔子的人生——从少年到暮年" data-img="assets/style-02-life.jpg">
+        <div class="card-media"><img src="assets/style-02-life.jpg" alt="" loading="lazy" /></div>
+        <div class="select-mark" aria-hidden="true">
+          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" /></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="version-tag">版本 02</div>
+          </div>
+          <h3>孔子的人生</h3>
+          <p class="pitch">跟随孔子从少年到暮年。所有原文不是教条，而是他一生不同阶段的「处境 + 困境 + 选择 + 心境沉淀」。</p>
+          <div class="meta-row">
+            <span class="chip">传记时间线</span>
+            <span class="chip">6 周 × 每周 5 课</span>
+            <span class="chip">人生阶段</span>
+          </div>
+          <div class="path">
+            <div class="path-item"><div class="path-num">1</div><div><strong>出身与少年</strong><span>吾少也贱</span></div></div>
+            <div class="path-item"><div class="path-num">2</div><div><strong>教学 · 出仕</strong><span>有教无类 → 苟有用我者</span></div></div>
+            <div class="path-item"><div class="path-num">3</div><div><strong>周游 · 晚年</strong><span>丧家之狗 → 不复梦见周公</span></div></div>
+            <div class="path-item"><div class="path-num">4</div><div><strong>遗产</strong><span>他留下了什么</span></div></div>
+          </div>
+          <div class="preview">
+            <div class="preview-label">设计理念</div>
+            <div class="quote">先认识这个人，再理解这些话——六周还原一个「平凡而伟大」的孔子。</div>
+          </div>
+          <span class="detail-btn" data-detail="2">查看完整介绍 →</span>
+        </div>
+      </button>
+
+      <button type="button" class="style-card" data-id="3" role="radio" aria-checked="false"
+        data-title="修齐治平" data-full="修齐治平——《论语》20讲" data-img="assets/style-03-questions.jpg">
+        <div class="card-media"><img src="assets/style-03-questions.jpg" alt="" loading="lazy" /></div>
+        <div class="select-mark" aria-hidden="true">
+          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" /></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="version-tag">版本 03</div>
+          </div>
+          <h3>修齐治平</h3>
+          <p class="pitch">《论语》20 讲：你遇到的人生难题，孔子都回答过。从修身到处世，从带团队到问天命——一问一答，直接可用。</p>
+          <div class="meta-row">
+            <span class="chip">问题驱动</span>
+            <span class="chip">20 课</span>
+            <span class="chip">修 · 齐 · 治 · 平</span>
+          </div>
+          <div class="path">
+            <div class="path-item"><div class="path-num">1</div><div><strong>修身</strong><span>先把自己活明白 · 第 1–6 课</span></div></div>
+            <div class="path-item"><div class="path-num">2</div><div><strong>处世</strong><span>和世界怎么相处 · 第 7–14 课</span></div></div>
+            <div class="path-item"><div class="path-num">3</div><div><strong>治企</strong><span>如何带团队 · 第 15–18 课</span></div></div>
+            <div class="path-item"><div class="path-num">4</div><div><strong>平天下</strong><span>这一生为了什么 · 第 19–20 课</span></div></div>
+          </div>
+          <div class="preview">
+            <div class="preview-label">课题举例</div>
+            <div class="quote">被伤害了，该忍还是该撕？为什么越管，团队越乱？明知没结果，还要做吗？</div>
+          </div>
+          <span class="detail-btn" data-detail="3">查看完整介绍 →</span>
+        </div>
+      </button>
+
+      <button type="button" class="style-card" data-id="4" role="radio" aria-checked="false"
+        data-title="人生四大作品" data-full="跟着孔子，建设人生四大作品" data-img="assets/style-04-works.jpg">
+        <div class="card-media"><img src="assets/style-04-works.jpg" alt="" loading="lazy" /></div>
+        <div class="select-mark" aria-hidden="true">
+          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" /></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="version-tag">版本 04</div>
+          </div>
+          <h3>人生四大作品</h3>
+          <p class="pitch">跟着孔子，建设人生四大作品。从吃饭、情绪、事业，到夫妻、孝顺、教子——把经典落进日常具体事。</p>
+          <div class="meta-row">
+            <span class="chip">生活主题</span>
+            <span class="chip">22 课</span>
+            <span class="chip">即学即用</span>
+          </div>
+          <div class="path">
+            <div class="path-item"><div class="path-num">1</div><div><strong>健康</strong><span>吃饭 · 情绪 · 快乐 · 长寿</span></div></div>
+            <div class="path-item"><div class="path-num">2</div><div><strong>事业</strong><span>被看见 · 不器 · 信任与底线</span></div></div>
+            <div class="path-item"><div class="path-num">3</div><div><strong>情感与家庭</strong><span>夫妻 · 交友 · 黄金法则</span></div></div>
+            <div class="path-item"><div class="path-num">4</div><div><strong>子女与成长</strong><span>孝顺 · 教子 · 后生可畏</span></div></div>
+          </div>
+          <div class="preview">
+            <div class="preview-label">话题举例</div>
+            <div class="quote">孔子教你「好好吃饭」；给父母钱就是孝顺吗？你还在等领导「发现」你？</div>
+          </div>
+          <span class="detail-btn" data-detail="4">查看完整介绍 →</span>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <section class="vote wrap" id="vote" aria-labelledby="vote-title">
+    <div class="vote-panel">
+      <div class="eyebrow">SCAN TO VOTE</div>
+      <h2 id="vote-title">扫码投票，选出你最喜欢的风格</h2>
+      <p>比较完四种课程后，请用微信扫一扫下方二维码，投下你那一票。</p>
+      <div class="qr-frame">
+        <img src="assets/vote-qr.png" alt="扫码投票二维码" width="220" height="220" />
+      </div>
+      <p class="vote-hint">微信扫一扫 · 选择你最喜欢的一种风格与内容形式</p>
+    </div>
+  </section>
+
+  <div class="choice-bar" id="choiceBar" aria-live="polite">
+    <div class="label">
+      <strong id="barTitle">尚未选择</strong>
+      <span id="barSub">点选上方任意一种风格</span>
+    </div>
+    <button type="button" class="confirm" id="confirmBtn">确认这是我的选择</button>
+  </div>
+
+  <div class="modal-backdrop" id="backdrop"></div>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="close" id="modalClose" aria-label="关闭">×</button>
+    <div class="modal-cover">
+      <img id="modalCover" src="assets/style-01-travel.jpg" alt="" />
+    </div>
+    <div class="modal-inner">
+      <div class="eyebrow" id="modalEyebrow">版本</div>
+      <h3 id="modalTitle">标题</h3>
+      <p class="lead" id="modalLead"></p>
+      <div class="blocks" id="modalBlocks"></div>
+      <button type="button" class="pick" id="modalPick">选择这个风格</button>
+    </div>
+  </div>
+
+  <div class="success" id="success" role="status">
+    <div class="success-bg" aria-hidden="true">
+      <img id="successCover" src="assets/hero-journey.jpg" alt="" />
+    </div>
+    <div class="success-inner">
+      <div class="seal">选</div>
+      <h2>最后一步：扫码投票</h2>
+      <p>你已选定风格。请再用微信扫下方二维码，正式投下这一票。</p>
+      <div class="chosen-name" id="successName"></div>
+      <div class="success-qr">
+        <img src="assets/vote-qr.png" alt="扫码投票二维码" width="148" height="148" />
+      </div>
+      <button type="button" class="btn btn-primary" id="resetBtn">重新选择</button>
+    </div>
+  </div>
+
+  <script>
+    const DETAILS = {
+      1: {
+        eyebrow: "版本 01 · 场景叙事 + 互动提问",
+        title: "与孔子游——三十天和孔子一起周游列国",
+        lead: "四单元、二十课。每课都是：核心原文 → 当代标题 → 「与孔子游」现场 → 刺人的互动问题。",
+        blocks: [
+          {
+            h: "第一单元 · 如何看待「自我」",
+            html: `
+              <div class="lesson"><div class="n">第 1 课</div><div class="t">清醒的人不否认本能，而是驾驭本能</div><div class="s">卫国，南子同车招摇过市，孔子的车当背景板……「吾未见好德如好色者也。」</div></div>
+              <div class="lesson"><div class="n">第 2 课</div><div class="t">允许自己崩溃，是继续走下去的前提</div><div class="s">「堕三都」失败后的深夜气话：「道不行，乘桴浮于海。」</div></div>
+              <div class="lesson"><div class="n">第 3–5 课</div><div class="t">上当、痛骂、待贾而沽</div><div class="s">从「听言观行」到「我待贾者也」——自我认知的三次升级。</div></div>`
+          },
+          {
+            h: "第二单元 · 如何应对「逆境」",
+            html: `<ul>
+              <li>匡地被围：找一个比恐惧更大的东西抓住它</li>
+              <li>陈蔡绝粮：低谷时做了什么，定义了你是谁</li>
+              <li>渡口遇隐士：清醒不是逃离，是明知复杂依然留下</li>
+              <li>被笑「丧家之犬」：把精力放在值不值得，而非被不被看</li>
+              <li>改革失败：把结果交给命，把过程留给自己</li>
+            </ul>`
+          },
+          {
+            h: "第三 · 四单元",
+            html: `<ul>
+              <li>关系：颜回之仁、真正的勇敢、不赶尽杀绝、爱礼甚于爱羊、「吾与点也」</li>
+              <li>终点：归与归与、不复梦见周公、史之阙文、予欲无言，最后回到「学而时习之」</li>
+            </ul>`
+          },
+          {
+            h: "适合谁",
+            html: `<ul>
+              <li>喜欢故事感、电影感，想「跟着走」的学员</li>
+              <li>希望每课都有可讨论的互动问题</li>
+              <li>愿意用连续场景养成跟随感</li>
+            </ul>`
+          }
+        ]
+      },
+      2: {
+        eyebrow: "版本 02 · 传记时间线",
+        title: "孔子的人生——从少年到暮年",
+        lead: "设计理念：跟随孔子从少年到暮年的人生轨迹。原文是处境、困境、选择与心境沉淀，不是教条。",
+        blocks: [
+          {
+            h: "六周骨架",
+            html: `<ul>
+              <li>第一周：出身与少年——「吾少也贱」</li>
+              <li>第二周：教学——「有教无类」</li>
+              <li>第三周：出仕——「苟有用我者」</li>
+              <li>第四周：周游——「累累若丧家之狗」</li>
+              <li>第五周：晚年——「不复梦见周公」</li>
+              <li>第六周：遗产——他留下了什么</li>
+            </ul>`
+          },
+          {
+            h: "一周长什么样（以第一周为例）",
+            html: `
+              <div class="lesson"><div class="n">周一</div><div class="t">孔子的身世——「吾少也贱，故多能鄙事」</div><div class="s">贫寒出身如何塑造了孔子</div></div>
+              <div class="lesson"><div class="n">周二</div><div class="t">少年立志——「吾十有五而志于学」</div><div class="s">十五岁那年发生了什么</div></div>
+              <div class="lesson"><div class="n">周三–周五</div><div class="t">好学 · 知之为知之 · 第一份工作</div><div class="s">从品质、求知态度，到委吏、乘田的基层经历</div></div>`
+          },
+          {
+            h: "适合谁",
+            html: `<ul>
+              <li>想完整认识「孔子是怎样一个人」</li>
+              <li>喜欢按人生阶段、时间线系统走读</li>
+              <li>愿意投入六周做一次人物特写式学习</li>
+            </ul>`
+          }
+        ]
+      },
+      3: {
+        eyebrow: "版本 03 · 问题驱动",
+        title: "修齐治平——《论语》20讲",
+        lead: "副题：你遇到的人生难题，孔子都回答过。每课是当代问题 + 核心原文 + 孔子正在经历的「故事时刻」。",
+        blocks: [
+          {
+            h: "模块地图",
+            html: `<ul>
+              <li>第 1–6 课 · 修身：爱学习的年轻人 → 先把自己活明白</li>
+              <li>第 7–14 课 · 处世：屡屡碰壁的中年人 → 和世界怎么相处</li>
+              <li>第 15–18 课 · 治企：历经沧桑的实践者 → 如何带团队</li>
+              <li>第 19–20 课 · 平天下：通透的老人 → 这一生为了什么</li>
+            </ul>`
+          },
+          {
+            h: "课题举例",
+            html: `
+              <div class="lesson"><div class="n">修身</div><div class="t">遇事总怪别人，怎么改？ / 不懂装懂，还是承认不知道？</div></div>
+              <div class="lesson"><div class="n">处世</div><div class="t">被伤害了，该忍还是该撕？ / 遇到讨厌的人，怎么应对？</div></div>
+              <div class="lesson"><div class="n">治企 · 平天下</div><div class="t">为什么越管，团队越乱？ / 明知没结果，还要做吗？</div></div>`
+          },
+          {
+            h: "适合谁",
+            html: `<ul>
+              <li>带着现实问题来的学员</li>
+              <li>喜欢「一问一答 + 故事时刻」的节奏</li>
+              <li>希望学完就能用在人际与管理上</li>
+            </ul>`
+          }
+        ]
+      },
+      4: {
+        eyebrow: "版本 04 · 生活主题连载",
+        title: "跟着孔子，建设人生四大作品",
+        lead: "22 课，按人生作品板块推进：健康、事业、情感与家庭、子女与成长，最后收束到忠恕。",
+        blocks: [
+          {
+            h: "课程板块",
+            html: `<ul>
+              <li>开篇：孔子何许人也？</li>
+              <li>健康（第 2–5 课）：好好吃饭、情绪管理、穷开心、长寿秘诀</li>
+              <li>事业（第 6–12 课）：被看见、君子不器、该不该赚、看人三招……</li>
+              <li>情感与家庭（第 13–16 课）：夫妻、色难、交友、己所不欲</li>
+              <li>子女与成长（第 17–20 课）：孝顺、教子、学思、后生可畏</li>
+              <li>总结（第 21–22 课）：忠与恕 · 孔子值不值得跟他走一段路</li>
+            </ul>`
+          },
+          {
+            h: "话题举例",
+            html: `
+              <div class="lesson"><div class="n">健康</div><div class="t">孔子教你「好好吃饭」：顶级自律就藏在一日三餐里</div></div>
+              <div class="lesson"><div class="n">事业</div><div class="t">你还在等领导「发现」你？先让自己成为值得被看见的人</div></div>
+              <div class="lesson"><div class="n">家庭</div><div class="t">给父母钱就是孝顺吗？孔子如何教子？</div></div>`
+          },
+          {
+            h: "适合谁",
+            html: `<ul>
+              <li>想从生活痛点切入经典的学员</li>
+              <li>偏好短而具体、可立刻对照的内容</li>
+              <li>对「建设人生作品」这个隐喻有共鸣</li>
+            </ul>`
+          }
+        ]
+      }
+    };
+
+    const cards = [...document.querySelectorAll(".style-card")];
+    const choiceBar = document.getElementById("choiceBar");
+    const barTitle = document.getElementById("barTitle");
+    const barSub = document.getElementById("barSub");
+    const confirmBtn = document.getElementById("confirmBtn");
+    const backdrop = document.getElementById("backdrop");
+    const modal = document.getElementById("modal");
+    const modalClose = document.getElementById("modalClose");
+    const modalEyebrow = document.getElementById("modalEyebrow");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalLead = document.getElementById("modalLead");
+    const modalBlocks = document.getElementById("modalBlocks");
+    const modalPick = document.getElementById("modalPick");
+    const modalCover = document.getElementById("modalCover");
+    const success = document.getElementById("success");
+    const successName = document.getElementById("successName");
+    const successCover = document.getElementById("successCover");
+    const resetBtn = document.getElementById("resetBtn");
+    const randomPick = document.getElementById("randomPick");
+
+    let selectedId = null;
+    let modalId = null;
+
+    function getCardImg(id) {
+      const card = cards.find((c) => c.dataset.id === id);
+      return card?.dataset.img || "assets/hero-journey.jpg";
+    }
+
+    function selectStyle(id, { scroll = false } = {}) {
+      selectedId = id;
+      cards.forEach((card) => {
+        const on = card.dataset.id === id;
+        card.classList.toggle("is-selected", on);
+        card.setAttribute("aria-checked", on ? "true" : "false");
+      });
+      const card = cards.find((c) => c.dataset.id === id);
+      barTitle.textContent = card.dataset.title;
+      barSub.textContent = card.dataset.full;
+      choiceBar.classList.add("is-visible");
+      if (scroll) card.scrollIntoView({ behavior: "smooth", block: "center" });
+      try { localStorage.setItem("lunyu-style-choice", id); } catch (_) {}
+    }
+
+    function openModal(id) {
+      modalId = id;
+      const d = DETAILS[id];
+      modalEyebrow.textContent = d.eyebrow;
+      modalTitle.textContent = d.title;
+      modalLead.textContent = d.lead;
+      modalCover.src = getCardImg(id);
+      modalBlocks.innerHTML = d.blocks
+        .map((b) => `<div class="block"><h4>${b.h}</h4>${b.html}</div>`)
+        .join("");
+      backdrop.classList.add("is-open");
+      modal.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      modalClose.focus();
+    }
+
+    function closeModal() {
+      backdrop.classList.remove("is-open");
+      modal.classList.remove("is-open");
+      document.body.style.overflow = "";
+      modalId = null;
+    }
+
+    function confirmChoice() {
+      if (!selectedId) return;
+      const card = cards.find((c) => c.dataset.id === selectedId);
+      successName.textContent = card.dataset.full;
+      successCover.src = getCardImg(selectedId);
+      success.classList.add("is-open");
+      choiceBar.classList.remove("is-visible");
+      closeModal();
+      try { localStorage.setItem("lunyu-style-confirmed", selectedId); } catch (_) {}
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener("click", (e) => {
+        const detail = e.target.closest("[data-detail]");
+        if (detail) {
+          e.preventDefault();
+          e.stopPropagation();
+          openModal(detail.dataset.detail);
+          return;
+        }
+        selectStyle(card.dataset.id);
+      });
+    });
+
+    confirmBtn.addEventListener("click", confirmChoice);
+    modalPick.addEventListener("click", () => {
+      if (modalId) selectStyle(modalId);
+      closeModal();
+    });
+    modalClose.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", closeModal);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    randomPick.addEventListener("click", () => {
+      const ids = cards.map((c) => c.dataset.id);
+      selectStyle(ids[Math.floor(Math.random() * ids.length)], { scroll: true });
+    });
+
+    resetBtn.addEventListener("click", () => {
+      success.classList.remove("is-open");
+      if (selectedId) choiceBar.classList.add("is-visible");
+      try { localStorage.removeItem("lunyu-style-confirmed"); } catch (_) {}
+    });
+
+    try {
+      const confirmed = localStorage.getItem("lunyu-style-confirmed");
+      const saved = localStorage.getItem("lunyu-style-choice");
+      if (confirmed && DETAILS[confirmed]) {
+        selectStyle(confirmed);
+        successName.textContent = cards.find((c) => c.dataset.id === confirmed).dataset.full;
+        successCover.src = getCardImg(confirmed);
+        success.classList.add("is-open");
+      } else if (saved && DETAILS[saved]) {
+        selectStyle(saved);
+      }
+    } catch (_) {}
+  </script>
+</body>
+</html>

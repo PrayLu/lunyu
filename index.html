@@ -950,7 +950,7 @@
 <body>
   <section class="hero" aria-label="课程风格选择首页">
     <div class="hero-media" aria-hidden="true">
-      <img src="assets/hero-journey.jpg" alt="" />
+      <img src="hero-journey.jpg" alt="" />
       <div class="hero-veil"></div>
     </div>
     <div class="hero-content wrap">
@@ -974,8 +974,8 @@
 
     <div class="styles" role="radiogroup" aria-label="课程风格选择">
       <button type="button" class="style-card" data-id="1" role="radio" aria-checked="false"
-        data-title="与孔子游" data-full="与孔子游——三十天和孔子一起周游列国" data-img="assets/style-01-travel.jpg">
-        <div class="card-media"><img src="assets/style-01-travel.jpg" alt="" loading="lazy" /></div>
+        data-title="与孔子游" data-full="与孔子游——三十天和孔子一起周游列国" data-img="style-01-travel.jpg">
+        <div class="card-media"><img src="style-01-travel.jpg" alt="" loading="lazy" /></div>
         <div class="select-mark" aria-hidden="true">
           <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" /></svg>
         </div>
@@ -1008,8 +1008,8 @@
       </button>
 
       <button type="button" class="style-card" data-id="2" role="radio" aria-checked="false"
-        data-title="孔子的人生" data-full="孔子的人生——从少年到暮年" data-img="assets/style-02-life.jpg">
-        <div class="card-media"><img src="assets/style-02-life.jpg" alt="" loading="lazy" /></div>
+        data-title="孔子的人生" data-full="孔子的人生——从少年到暮年" data-img="style-02-life.jpg">
+        <div class="card-media"><img src="style-02-life.jpg" alt="" loading="lazy" /></div>
         <div class="select-mark" aria-hidden="true">
           <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" /></svg>
         </div>
@@ -1039,8 +1039,8 @@
       </button>
 
       <button type="button" class="style-card" data-id="3" role="radio" aria-checked="false"
-        data-title="修齐治平" data-full="修齐治平——《论语》20讲" data-img="assets/style-03-questions.jpg">
-        <div class="card-media"><img src="assets/style-03-questions.jpg" alt="" loading="lazy" /></div>
+        data-title="修齐治平" data-full="修齐治平——《论语》20讲" data-img="style-03-questions.jpg">
+        <div class="card-media"><img src="style-03-questions.jpg" alt="" loading="lazy" /></div>
         <div class="select-mark" aria-hidden="true">
           <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" /></svg>
         </div>
@@ -1070,8 +1070,8 @@
       </button>
 
       <button type="button" class="style-card" data-id="4" role="radio" aria-checked="false"
-        data-title="人生四大作品" data-full="跟着孔子，建设人生四大作品" data-img="assets/style-04-works.jpg">
-        <div class="card-media"><img src="assets/style-04-works.jpg" alt="" loading="lazy" /></div>
+        data-title="人生四大作品" data-full="跟着孔子，建设人生四大作品" data-img="style-04-works.jpg">
+        <div class="card-media"><img src="style-04-works.jpg" alt="" loading="lazy" /></div>
         <div class="select-mark" aria-hidden="true">
           <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" /></svg>
         </div>
@@ -1108,7 +1108,7 @@
       <h2 id="vote-title">扫码投票，选出你最喜欢的风格</h2>
       <p>比较完四种课程后，请用微信扫一扫下方二维码，投下你那一票。</p>
       <div class="qr-frame">
-        <img src="assets/vote-qr.png" alt="扫码投票二维码" width="220" height="220" />
+        <img src="vote-qr.png" alt="扫码投票二维码" width="220" height="220" />
       </div>
       <p class="vote-hint">微信扫一扫 · 选择你最喜欢的一种风格与内容形式</p>
     </div>
@@ -1126,7 +1126,7 @@
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button type="button" class="close" id="modalClose" aria-label="关闭">×</button>
     <div class="modal-cover">
-      <img id="modalCover" src="assets/style-01-travel.jpg" alt="" />
+      <img id="modalCover" src="style-01-travel.jpg" alt="" />
     </div>
     <div class="modal-inner">
       <div class="eyebrow" id="modalEyebrow">版本</div>
@@ -1139,7 +1139,7 @@
 
   <div class="success" id="success" role="status">
     <div class="success-bg" aria-hidden="true">
-      <img id="successCover" src="assets/hero-journey.jpg" alt="" />
+      <img id="successCover" src="hero-journey.jpg" alt="" />
     </div>
     <div class="success-inner">
       <div class="seal">选</div>
@@ -1147,7 +1147,7 @@
       <p>你已选定风格。请再用微信扫下方二维码，正式投下这一票。</p>
       <div class="chosen-name" id="successName"></div>
       <div class="success-qr">
-        <img src="assets/vote-qr.png" alt="扫码投票二维码" width="148" height="148" />
+        <img src="vote-qr.png" alt="扫码投票二维码" width="148" height="148" />
       </div>
       <button type="button" class="btn btn-primary" id="resetBtn">重新选择</button>
     </div>
@@ -1318,7 +1318,7 @@
 
     function getCardImg(id) {
       const card = cards.find((c) => c.dataset.id === id);
-      return card?.dataset.img || "assets/hero-journey.jpg";
+      return card?.dataset.img || "hero-journey.jpg";
     }
 
     function selectStyle(id, { scroll = false } = {}) {
